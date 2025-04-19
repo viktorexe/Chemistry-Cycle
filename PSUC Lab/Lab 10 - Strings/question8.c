@@ -1,11 +1,19 @@
 #include <stdio.h>
 #include <string.h>
+
 int main() {
-    char s[100];
-    gets(s);
-    int l = strlen(s), p=1, i;
-    for(i=0; i<l/2; i++)
-        if(s[i] != s[l-i-1]) p=0;
-    printf(p ? "Palindrome" : "Not palindrome");
+    char str[100];
+    fgets(str, 100, stdin);
+    int len = strlen(str) - 1; // -1 to exclude '\n'
+
+    int isPalindrome = 1;
+    for (int i = 0; i < len / 2; i++) {
+        if (str[i] != str[len - i - 1]) {
+            isPalindrome = 0;
+            break;
+        }
+    }
+
+    printf(isPalindrome ? "Palindrome" : "Not a palindrome");
     return 0;
 }
