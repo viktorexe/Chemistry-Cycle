@@ -1,9 +1,14 @@
 #include <stdio.h>
+
 int main() {
-    char s[100];
-    gets(s);
-    int i;
-    for(i=0; s[i]; i++);
-    printf("%d", i);
+    char str[100];
+    fgets(str, 100, stdin);
+
+    int len = 0;
+    while (str[len] != '\0' && str[len] != '\n') {
+        len++;
+    }
+
+    printf("%d", len);
     return 0;
 }
