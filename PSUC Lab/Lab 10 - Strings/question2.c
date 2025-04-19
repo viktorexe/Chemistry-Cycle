@@ -1,20 +1,17 @@
 #include <stdio.h>
-#include <string.h>
 
 int main() {
-    char str[100], reversed[100];
-    printf("Enter a string: ");
-    fgets(str, sizeof(str), stdin);
-    str[strcspn(str, "\n")] = '\0'; // Remove newline character
+    char str[100], ch;
+    fgets(str, 100, stdin);
+    scanf("%c", &ch);
 
-    int len = strlen(str);
-
-    for (int i = 0; i < len; i++) {
-        reversed[i] = str[len - i - 1];
+    int lastPos = -1;
+    for (int i = 0; str[i]; i++) {
+        if (str[i] == ch) {
+            lastPos = i;
+        }
     }
-    reversed[len] = '\0';
 
-    printf("Reversed string: %s\n", reversed);
-
+    printf("%d", lastPos);
     return 0;
 }
