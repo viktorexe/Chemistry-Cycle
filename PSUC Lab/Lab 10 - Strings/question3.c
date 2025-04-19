@@ -1,22 +1,16 @@
 #include <stdio.h>
-#include <ctype.h>
+#include <string.h>
 
 int main() {
-    char str[100];
-    printf("Enter a string: ");
-    fgets(str, sizeof(str), stdin);
-    str[strcspn(str, "\n")] = '\0'; // Remove newline character
+    char s1[100], s2[100];
+    fgets(s1, 100, stdin);
+    fgets(s2, 100, stdin);
 
-    int count = 0;
-
-    for (int i = 0; str[i] != '\0'; i++) {
-        char ch = tolower(str[i]);
-        if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
-            count++;
-        }
-    }
-
-    printf("Number of vowels: %d\n", count);
-
+    printf("Length of s1: %lu\n", strlen(s1) - 1); // -1 to exclude '\n'
+    strcat(s1, s2);
+    printf("Concatenated: %s", s1);
+    
+    strcpy(s1, s2);
+    printf("Copied s2 to s1: %s", s1);
     return 0;
 }
